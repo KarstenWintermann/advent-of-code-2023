@@ -14,6 +14,7 @@ func timeTrack(start time.Time, name string) {
 }
 
 func findNumberOfWays(input string) int {
+	defer timeTrack(time.Now(), "Part 1")
 	lines := strings.Split(input, "\r\n")
 	times := strings.Fields(lines[0])
 	distances := strings.Fields(lines[1])
@@ -39,6 +40,7 @@ func findNumberOfWays(input string) int {
 }
 
 func findNumberOfWays2(input string) int {
+	defer timeTrack(time.Now(), "Part 2")
 	lines := strings.Split(input, "\r\n")
 	times := strings.Fields(lines[0])
 	distances := strings.Fields(lines[1])

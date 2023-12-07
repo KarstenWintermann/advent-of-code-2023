@@ -130,11 +130,14 @@ func score2(cards string) int {
 }
 
 type handAndBet struct {
-	hand string
-	bet  int
+	hand  string
+	bet   int
+	score int
 }
 
 func findWinnings(input string) int {
+	defer timeTrack(time.Now(), "Part 1")
+
 	lines := strings.Split(input, "\r\n")
 	cards_array := make([]handAndBet, 0)
 	totalScore := 0
@@ -147,16 +150,14 @@ func findWinnings(input string) int {
 		hand = strings.ReplaceAll(hand, "J", "B")
 		hand = strings.ReplaceAll(hand, "T", "A")
 		bet, _ := strconv.Atoi(fields[1])
-		cards_array = append(cards_array, handAndBet{hand, bet})
+		cards_array = append(cards_array, handAndBet{hand, bet, score(hand)})
 	}
 
 	handsCmp := func(a, b handAndBet) int {
-		scoreA := score(a.hand)
-		scoreB := score(b.hand)
-		if scoreA == scoreB {
+		if a.score == b.score {
 			return strings.Compare(a.hand, b.hand)
 		} else {
-			return cmp.Compare(scoreA, scoreB)
+			return cmp.Compare(a.score, b.score)
 		}
 	}
 
@@ -170,6 +171,7 @@ func findWinnings(input string) int {
 }
 
 func findWinnings2(input string) int {
+	defer timeTrack(time.Now(), "Part 2")
 	lines := strings.Split(input, "\r\n")
 	cards_array := make([]handAndBet, 0)
 	totalScore := 0
@@ -182,16 +184,14 @@ func findWinnings2(input string) int {
 		hand = strings.ReplaceAll(hand, "T", "A")
 		hand = strings.ReplaceAll(hand, "J", "0")
 		bet, _ := strconv.Atoi(fields[1])
-		cards_array = append(cards_array, handAndBet{hand, bet})
+		cards_array = append(cards_array, handAndBet{hand, bet, score2(hand)})
 	}
 
 	handsCmp := func(a, b handAndBet) int {
-		scoreA := score2(a.hand)
-		scoreB := score2(b.hand)
-		if scoreA == scoreB {
+		if a.score == b.score {
 			return strings.Compare(a.hand, b.hand)
 		} else {
-			return cmp.Compare(scoreA, scoreB)
+			return cmp.Compare(a.score, b.score)
 		}
 	}
 
