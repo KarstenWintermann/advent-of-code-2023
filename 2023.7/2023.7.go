@@ -173,9 +173,9 @@ func findWinnings(input string) int {
 func findWinnings2(input string) int {
 	defer timeTrack(time.Now(), "Part 2")
 	lines := strings.Split(input, "\r\n")
-	cards_array := make([]handAndBet, 0)
+	cards_array := make([]handAndBet, len(lines))
 	totalScore := 0
-	for _, line := range lines {
+	for i, line := range lines {
 		fields := strings.Fields(line)
 		hand := fields[0]
 		hand = strings.ReplaceAll(hand, "A", "E")
@@ -184,7 +184,7 @@ func findWinnings2(input string) int {
 		hand = strings.ReplaceAll(hand, "T", "A")
 		hand = strings.ReplaceAll(hand, "J", "0")
 		bet, _ := strconv.Atoi(fields[1])
-		cards_array = append(cards_array, handAndBet{hand, bet, score2(hand)})
+		cards_array[i] = handAndBet{hand, bet, score2(hand)}
 	}
 
 	handsCmp := func(a, b handAndBet) int {
