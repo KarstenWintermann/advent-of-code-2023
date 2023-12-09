@@ -30,7 +30,7 @@ func score(cards string) int {
 
 	score := 0
 
-	for nums, _ := range res {
+	for nums := range res {
 		switch res[nums] {
 		case 5:
 			score = FIVE_OF_A_KIND
@@ -65,7 +65,7 @@ func score2(cards string) int {
 	score := 0
 	num_jokers := res["0"]
 
-	for nums, _ := range res {
+	for nums := range res {
 		if nums != "0" {
 			switch res[nums] {
 			case 5:
