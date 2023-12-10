@@ -52,6 +52,7 @@ func findPrediction2(input []int) int {
 }
 
 func findPredictionsSum(input string) int {
+	defer timeTrack(time.Now(), "Part 1")
 	lines := strings.Split(input, "\r\n")
 	result := 0
 	for _, line := range lines {
@@ -66,6 +67,7 @@ func findPredictionsSum(input string) int {
 }
 
 func findPredictionsSum2(input string) int {
+	defer timeTrack(time.Now(), "Part 2")
 	lines := strings.Split(input, "\r\n")
 	result := 0
 	for _, line := range lines {
