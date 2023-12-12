@@ -82,6 +82,7 @@ func distance2(a pos_t, b pos_t, nonempty_lines []bool, nonempty_columns []bool,
 }
 
 func findAllDistances2(input string, expansion_factor int) int {
+	defer timeTrack(time.Now(), "Part 2")
 	lines := strings.Split(input, "\r\n")
 	nonempty_lines := make([]bool, len(lines))
 	nonempty_columns := make([]bool, len(lines[0]))
@@ -107,6 +108,7 @@ func findAllDistances2(input string, expansion_factor int) int {
 }
 
 func findAllDistances(input string) int {
+	defer timeTrack(time.Now(), "Part 1")
 	lines := strings.Split(input, "\r\n")
 	bitmap := make([][]bool, 0)
 	i := 0
@@ -168,6 +170,6 @@ func main() {
 	if err != nil {
 		fmt.Printf("error reading file")
 	}
-	fmt.Printf("test: %v\n", findAllDistances(string(bytes)))
-	fmt.Printf("test: %v\n", findAllDistances2(string(bytes), 1000000))
+	fmt.Printf("findAllDistances: %v\n", findAllDistances(string(bytes)))
+	fmt.Printf("findAllDistances2: %v\n", findAllDistances2(string(bytes), 1000000))
 }
