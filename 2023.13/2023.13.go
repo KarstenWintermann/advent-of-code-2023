@@ -50,7 +50,7 @@ func difference(a, b string) int {
 }
 
 func findSmudgedReflection(lines []string) int {
-	for i, _ := range lines {
+	for i := range lines {
 		smudge := 0
 		for j := 0; j <= len(lines); j++ {
 			if i+j+1 >= len(lines) || i-j < 0 {
