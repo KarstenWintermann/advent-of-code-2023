@@ -82,7 +82,6 @@ func main() {
 	if err != nil {
 		fmt.Printf("error reading file")
 	}
-	fmt.Printf("test: %v\n", hash("HASH"))
-	fmt.Printf("test: %v\n", hashSteps(string(bytes)))
-	fmt.Printf("test: %v\n", hashMap(string(bytes)))
+	fmt.Printf("hash: %v\n", hashSteps(string(bytes)))
+	fmt.Printf("hashmap: %v\n", hashMap(string(bytes)))
 }
