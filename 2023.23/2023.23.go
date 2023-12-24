@@ -82,7 +82,6 @@ func step2(pos pos_t, visited map[pos_t]bool, lines *[]string) int {
 		return 0
 	}
 	if pos.x == len((*lines)[0])-2 && pos.y == len(*lines)-1 {
-		fmt.Printf(".")
 		//printmap(lines, visited)
 		return len(visited)
 	}
